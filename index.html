@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="format-detection" content="telephone=no, date=no, address=no, email=no"/>
 <meta http-equiv="x-rim-auto-match" content="none"/>
-<title>Marit Böttcher — Erzieherin</title>
+<title>Bewerbung — Marit Böttcher</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
@@ -46,14 +46,10 @@ body{
 
 address{font-style:normal}
 
-/* Prevent iOS/Safari auto-detected links */
 a[x-apple-data-detectors]{
-  color:inherit !important;
-  text-decoration:none !important;
-  font-size:inherit !important;
-  font-family:inherit !important;
-  font-weight:inherit !important;
-  line-height:inherit !important;
+  color:inherit !important;text-decoration:none !important;
+  font-size:inherit !important;font-family:inherit !important;
+  font-weight:inherit !important;line-height:inherit !important;
 }
 
 /* ── Page ── */
@@ -73,7 +69,120 @@ a[x-apple-data-detectors]{
 }
 
 /* ═══════════════════════════════
-   HERO
+   TAB NAVIGATION
+   ═══════════════════════════════ */
+.tabs{
+  display:flex;
+  gap:4px;
+  background:rgba(0,0,0,0.04);
+  border-radius:12px;
+  padding:3px;
+  margin-bottom:24px;
+  width:fit-content;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.tab{
+  font-family:var(--sans);
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink-3);
+  padding:8px 24px;
+  border-radius:10px;
+  border:none;
+  background:none;
+  cursor:pointer;
+  transition:all 0.2s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.tab:hover{color:var(--ink-2)}
+.tab.active{
+  background:var(--surface);
+  color:var(--ink);
+  box-shadow:0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* Tab content */
+.tab-content{display:none}
+.tab-content.visible{display:block}
+
+/* ═══════════════════════════════
+   ANSCHREIBEN
+   ═══════════════════════════════ */
+.letter{padding:40px 36px 36px}
+
+.letter-sender{
+  font-size:12px;
+  color:var(--ink-3);
+  margin-bottom:28px;
+  line-height:1.6;
+}
+
+.letter-recipient{
+  font-size:13px;
+  color:var(--ink-2);
+  line-height:1.7;
+  margin-bottom:28px;
+}
+
+.letter-date{
+  font-size:13px;
+  color:var(--ink-2);
+  text-align:right;
+  margin-bottom:32px;
+}
+
+.letter-subject{
+  font-size:14.5px;
+  font-weight:600;
+  color:var(--accent);
+  margin-bottom:8px;
+  line-height:1.4;
+}
+
+.letter-rule{
+  height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-muted));
+  border:none;
+  border-radius:1px;
+  margin-bottom:28px;
+  opacity:0.3;
+}
+
+.letter-body p{
+  font-size:13.5px;
+  color:var(--ink-2);
+  line-height:1.75;
+  margin-bottom:14px;
+  text-align:justify;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+}
+
+.letter-closing{
+  font-size:13.5px;
+  color:var(--ink-2);
+  margin-top:24px;
+  margin-bottom:6px;
+}
+
+.letter-name{
+  font-size:14px;
+  font-weight:600;
+  color:var(--accent);
+  margin-bottom:28px;
+}
+
+.letter-anlage{
+  font-size:11.5px;
+  color:var(--ink-4);
+  padding-top:16px;
+  border-top:1px solid var(--sep);
+}
+
+/* ═══════════════════════════════
+   HERO (CV)
    ═══════════════════════════════ */
 .hero{
   display:grid;
@@ -81,297 +190,117 @@ a[x-apple-data-detectors]{
   min-height:0;
 }
 
-/* Portrait */
 .hero-photo{
   position:relative;
   background:linear-gradient(160deg,#ede0e2 0%,#ddd0d4 100%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:flex;align-items:center;justify-content:center;
   overflow:hidden;
 }
-.hero-photo img{
-  width:100%;height:100%;
-  object-fit:cover;
-  object-position:center top;
-  display:block;
-}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .hero-photo .fallback{
-  font-family:var(--serif);
-  font-size:34px;
-  font-style:italic;
-  color:var(--accent-muted);
-  line-height:1;
-  user-select:none;
+  font-family:var(--serif);font-size:34px;font-style:italic;
+  color:var(--accent-muted);line-height:1;user-select:none;
 }
 
-/* Hero body */
+.hero.no-photo{grid-template-columns:80px 1fr}
+.hero.no-photo .hero-photo{min-height:0}
+
 .hero-body{
   padding:40px 36px 34px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+  display:flex;flex-direction:column;justify-content:center;
 }
 
-.hero-eyebrow{
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:0.04em;
-  color:var(--accent);
-  margin-bottom:12px;
-}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.04em;color:var(--accent);margin-bottom:12px}
 
 h1{
   font-family:var(--serif);
   font-size:clamp(1.75rem,4.8vw,2.35rem);
-  font-weight:400;
-  line-height:1.08;
-  letter-spacing:-0.025em;
-  color:var(--ink);
-  margin-bottom:10px;
+  font-weight:400;line-height:1.08;letter-spacing:-0.025em;
+  color:var(--ink);margin-bottom:10px;
 }
-h1 em{
-  font-style:italic;
-  color:var(--accent);
-}
+h1 em{font-style:italic;color:var(--accent)}
 
-.hero-role{
-  font-size:13.5px;
-  font-weight:400;
-  color:var(--ink-3);
-  margin-bottom:28px;
-}
+.hero-role{font-size:13.5px;font-weight:400;color:var(--ink-3);margin-bottom:28px}
 
 .contact-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:6px 20px;
-  padding-top:18px;
-  border-top:1px solid var(--sep);
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:6px 20px;padding-top:18px;border-top:1px solid var(--sep);
 }
-
-.c-item{
-  display:flex;
-  align-items:baseline;
-  gap:6px;
-  font-size:12.5px;
-  color:var(--ink-2);
-  line-height:1.65;
-}
-
-.c-label{
-  font-size:9.5px;
-  font-weight:600;
-  letter-spacing:0.05em;
-  text-transform:uppercase;
-  color:var(--ink-4);
-  flex-shrink:0;
-  min-width:48px;
-}
-
-.c-item a{
-  color:var(--ink-2);
-  text-decoration:none;
-  transition:color 0.15s;
-}
+.c-item{display:flex;align-items:baseline;gap:6px;font-size:12.5px;color:var(--ink-2);line-height:1.65}
+.c-label{font-size:9.5px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-4);flex-shrink:0;min-width:48px}
+.c-item a{color:var(--ink-2);text-decoration:none;transition:color 0.15s}
 .c-item a:hover{color:var(--accent)}
 
 /* ═══════════════════════════════
-   SECTIONS
+   SECTIONS (CV)
    ═══════════════════════════════ */
 .sec{padding:24px 28px 22px}
 
-.sec-head{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:18px;
-}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:18px}
 
-.sec-mark{
-  width:3px;
-  height:12px;
-  border-radius:2px;
-  background:var(--accent);
-  opacity:0.42;
-  flex-shrink:0;
-}
+.sec-mark{width:3px;height:12px;border-radius:2px;background:var(--accent);opacity:0.42;flex-shrink:0}
 
-h2{
-  font-family:var(--sans);
-  font-size:13px;
-  font-weight:600;
-  color:var(--ink);
-  letter-spacing:-0.01em;
-}
+h2{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink);letter-spacing:-0.01em}
 
-/* ── Entries ── */
 .entry{
-  padding:14px 0;
-  border-top:1px solid var(--sep);
-  display:grid;
-  grid-template-columns:104px 1fr;
-  gap:0 20px;
+  padding:14px 0;border-top:1px solid var(--sep);
+  display:grid;grid-template-columns:104px 1fr;gap:0 20px;
 }
 .entry:first-of-type{border-top:none;padding-top:0}
 .entry:last-of-type{padding-bottom:0}
 
-.entry-date{
-  font-size:12px;
-  font-weight:500;
-  color:var(--ink-3);
-  padding-top:1px;
-  font-variant-numeric:tabular-nums;
-  line-height:1.5;
-}
-/* Override mobile browser auto-detected links in dates */
-.entry-date a{
-  color:inherit !important;
-  text-decoration:none !important;
-  pointer-events:none;
-}
+.entry-date{font-size:12px;font-weight:500;color:var(--ink-3);padding-top:1px;font-variant-numeric:tabular-nums;line-height:1.5}
+.entry-date a{color:inherit !important;text-decoration:none !important;pointer-events:none}
 
-h3{
-  font-family:var(--sans);
-  font-size:14.5px;
-  font-weight:600;
-  color:var(--ink);
-  line-height:1.35;
-  margin-bottom:1px;
-  letter-spacing:-0.01em;
-}
+h3{font-family:var(--sans);font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.35;margin-bottom:1px;letter-spacing:-0.01em}
 
-.entry-org{
-  font-size:12.5px;
-  color:var(--ink-3);
-  margin-bottom:7px;
-  line-height:1.45;
-}
+.entry-org{font-size:12.5px;color:var(--ink-3);margin-bottom:7px;line-height:1.45}
 
 .entry-list{list-style:none;padding:0;margin:0}
-.entry-list li{
-  font-size:12.5px;
-  color:var(--ink-2);
-  line-height:1.65;
-  padding-left:12px;
-  position:relative;
-  margin-bottom:1px;
-}
-.entry-list li::before{
-  content:'';
-  position:absolute;
-  left:0;top:8px;
-  width:3px;height:3px;
-  border-radius:50%;
-  background:var(--ink-4);
-}
+.entry-list li{font-size:12.5px;color:var(--ink-2);line-height:1.65;padding-left:12px;position:relative;margin-bottom:1px}
+.entry-list li::before{content:'•';position:absolute;left:0;top:0;font-size:12.5px;line-height:1.65;color:var(--ink-3)}
 
-/* ── Unified tag ── */
-.tag{
-  display:inline-block;
-  font-size:11px;
-  font-weight:500;
-  color:var(--accent);
-  background:var(--accent-soft);
-  padding:3px 10px;
-  border-radius:6px;
-  margin-top:6px;
-}
+.tag{display:inline-block;font-size:11px;font-weight:500;color:var(--accent);background:var(--accent-soft);padding:3px 10px;border-radius:6px;margin-top:6px}
 
-/* ── Two-col ── */
-.duo{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-bottom:12px;
-}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
 
-/* ── Languages ── */
 .lang{margin-bottom:16px}
 .lang:last-child{margin-bottom:0}
-.lang-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:baseline;
-  margin-bottom:6px;
-}
+.lang-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
 .lang-name{font-size:13px;font-weight:500;color:var(--ink)}
 .lang-lvl{font-size:11.5px;color:var(--ink-3)}
-.track{
-  height:3px;
-  border-radius:99px;
-  background:var(--sep);
-  overflow:hidden;
-}
-.fill{
-  height:100%;
-  border-radius:99px;
-  background:var(--accent-muted);
-  transform-origin:left;
-  width:var(--w);
-  animation:grow .8s cubic-bezier(.25,.46,.45,.94) var(--d,0s) both;
-}
+.track{height:3px;border-radius:99px;background:var(--sep);overflow:hidden}
+.fill{height:100%;border-radius:99px;background:var(--accent-muted);transform-origin:left;width:var(--w);animation:grow .8s cubic-bezier(.25,.46,.45,.94) var(--d,0s) both}
 @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
-/* ── Unified pills ── */
 .pill-group{display:flex;flex-wrap:wrap;gap:6px}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--accent);background:var(--accent-soft);padding:5px 13px;border-radius:99px}
+.pill svg{width:13px;height:13px;color:var(--accent-muted);flex-shrink:0}
 
-.pill{
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  font-size:12px;
-  font-weight:500;
-  color:var(--accent);
-  background:var(--accent-soft);
-  padding:5px 13px;
-  border-radius:99px;
-}
-
-.pill svg{
-  width:13px;height:13px;
-  color:var(--accent-muted);
-  flex-shrink:0;
-}
-
-/* ── Animations — explicit delay classes ── */
-.up{
-  opacity:0;
-  transform:translateY(10px);
-  animation:rise .45s cubic-bezier(.25,.46,.45,.94) forwards;
-}
-.d0{animation-delay:0s}
-.d1{animation-delay:.05s}
-.d2{animation-delay:.10s}
-.d3{animation-delay:.15s}
-.d4{animation-delay:.20s}
-.d5{animation-delay:.25s}
-.d6{animation-delay:.30s}
-
+/* ── Animations ── */
+.up{opacity:0;transform:translateY(10px);animation:rise .45s cubic-bezier(.25,.46,.45,.94) forwards}
+.d0{animation-delay:0s}.d1{animation-delay:.05s}.d2{animation-delay:.10s}
+.d3{animation-delay:.15s}.d4{animation-delay:.20s}.d5{animation-delay:.25s}.d6{animation-delay:.30s}
 @keyframes rise{to{opacity:1;transform:none}}
 
 /* ═══════════════════════════════
    RESPONSIVE
    ═══════════════════════════════ */
-
-/* No-photo fallback — desktop: slim side column */
-.hero.no-photo{grid-template-columns:80px 1fr}
-.hero.no-photo .hero-photo{min-height:0}
-
 @media(max-width:600px){
   .page{padding:20px 12px 40px}
   .hero{grid-template-columns:1fr;grid-template-rows:180px auto}
   .hero-photo{min-height:180px}
-  /* No-photo fallback — mobile: hide photo area entirely */
   .hero.no-photo{grid-template-columns:1fr;grid-template-rows:auto}
   .hero.no-photo .hero-photo{display:none}
   .hero-body{padding:24px 20px 22px}
+  .letter{padding:28px 22px 28px}
   .sec{padding:20px 18px 18px}
   .contact-row{grid-template-columns:1fr}
   .entry{grid-template-columns:1fr;gap:1px}
   .entry-date{font-size:11px;margin-bottom:1px}
   .duo{grid-template-columns:1fr}
   h1{font-size:1.65rem}
+  .tab{padding:7px 18px;font-size:12px}
 }
 
 /* ═══════════════════════════════
@@ -380,14 +309,14 @@ h3{
 @media print{
   body{background:#fff}
   .page{padding:8mm 10mm;max-width:none}
+  .tabs{display:none}
+  .tab-content{display:block !important}
+  .tab-content+.tab-content{page-break-before:always}
   .card{box-shadow:none;border:.5pt solid #ddd;break-inside:avoid}
   .entry{break-inside:avoid}
   .up{opacity:1;transform:none;animation:none}
   .fill{animation:none;transform:scaleX(1)}
-  .hero-photo{
-    -webkit-print-color-adjust:exact;
-    print-color-adjust:exact;
-  }
+  .hero-photo{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -400,207 +329,259 @@ h3{
 
 <div class="page">
 
-  <!-- ═══ HERO ═══ -->
-  <header class="card hero up d0">
-    <div class="hero-photo" id="photoWrap">
-      <img id="cvPhoto" src="me.jpeg" alt="Marit Böttcher"/>
-      <span class="fallback" id="photoFallback" hidden>MB</span>
+  <!-- ═══ TAB NAV ═══ -->
+  <nav class="tabs up d0" role="tablist">
+    <button class="tab active" role="tab" aria-selected="true" data-tab="anschreiben">Anschreiben</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="lebenslauf">Lebenslauf</button>
+  </nav>
+
+  <!-- ═══════════════════════════════
+       ANSCHREIBEN
+       ═══════════════════════════════ -->
+  <div class="tab-content visible" id="anschreiben">
+
+    <div class="card letter up d1">
+
+      <div class="letter-sender">
+        Marit Böttcher · Hauptstraße 16 · 23847 Schiphorst
+      </div>
+
+      <div class="letter-recipient">
+        Studentenwerk Schleswig-Holstein<br/>
+        Kindertagesstätte für Studentenkinder Lübeck<br/>
+        Anschützstraße 9<br/>
+        23562 Lübeck
+      </div>
+
+      <div class="letter-date">Schiphorst, März 2026</div>
+
+      <p class="letter-subject">Bewerbung als Erzieherin als Gruppenleitung (m/w/d), Kennziffer 750</p>
+      <hr class="letter-rule"/>
+
+      <div class="letter-body">
+        <p>Sehr geehrte Damen und Herren,</p>
+
+        <p>als ich meinen Bundesfreiwilligendienst im Kindergarten „Tingelfing" in Lübeck begann, wurde mir schnell klar, dass die Arbeit mit Kindern für mich mehr ist als ein Berufswunsch. Besonders die Mischung aus Beziehung, pädagogischer Begleitung und verlässlicher Alltagsgestaltung hat mich darin bestärkt, den Weg zur Erzieherin einzuschlagen. Im Juni 2026 werde ich meine Ausbildung zur staatlich anerkannten Erzieherin an der Beruflichen Schule des Kreises Stormarn abschließen. Anschließend möchte ich sehr gerne in Ihrer Kindertagesstätte arbeiten und dort Verantwortung in einer Gruppe übernehmen.</p>
+
+        <p>Mein Bundesfreiwilligendienst und mein späteres Praktikum im Kindergarten „Tingelfing" haben mir eine wertvolle Grundlage für die Arbeit im Elementarbereich gegeben. Ich habe Kinder im Alltag begleitet, pädagogische Angebote geplant und durchgeführt, Entwicklungsprozesse beobachtet und erste Erfahrungen in der Zusammenarbeit mit Eltern und im Team gesammelt. Gerade die Verbindung aus freiem Spiel, Bildungsimpulsen, verlässlichen Routinen und aufmerksamer Begleitung der Kinder habe ich dabei als besonders bedeutsam erlebt.</p>
+
+        <p>Während meiner Ausbildung konnte ich meinen Blick durch weitere Praxiserfahrungen in der Kinder- und Jugendhilfe vertiefen. Im Kinderheim „Haus Arild" in Bliestorf und in der Wohngruppe „Die Reitgruppe" in Lübeck habe ich erlebt, wie wichtig tragfähige Beziehungen, klare Strukturen und ein sensibler Umgang mit individuellen Lebensgeschichten sind. Dort habe ich Kinder und Jugendliche im Alltag begleitet, Projekte mitgeplant, Gespräche und Dokumentation kennengelernt sowie Einblicke in die Zusammenarbeit mit Eltern, Schulen, Ärzten und weiteren Institutionen gewonnen. Diese Erfahrungen haben mein Verantwortungsbewusstsein, meine Beziehungsarbeit und meinen Blick für individuelle Entwicklungsbedarfe nachhaltig gestärkt.</p>
+
+        <p>Für meine pädagogische Arbeit sind mir eine wertschätzende Beziehungsgestaltung, die Beteiligung der Kinder und eine verlässliche Struktur im Alltag besonders wichtig. Ich beobachte aufmerksam, greife Interessen der Kinder auf und gestalte Angebote so, dass sie zum Entdecken, Mitmachen und Weiterentwickeln anregen. Gleichzeitig arbeite ich gerne im Team, bringe eigene Ideen ein und schätze den offenen Austausch mit Eltern als wichtigen Teil guter pädagogischer Arbeit.</p>
+
+        <p>Auch mein ehrenamtliches Engagement als Teamerin in der Evangelischen Jugend Lauenburg begleitet mich bereits seit über acht Jahren. Dort plane und begleite ich Kinder- und Jugendgruppen, Freizeiten und Ausflüge. Diese langjährige Erfahrung hat meine Verlässlichkeit, mein Organisationstalent und meine Freude an der Arbeit mit Gruppen zusätzlich gestärkt.</p>
+
+        <p>Gerne möchte ich meine bisherigen Erfahrungen, meine Freude an der pädagogischen Arbeit und meine Bereitschaft, Verantwortung in einer Gruppe zu übernehmen, in Ihre Kindertagesstätte einbringen. Über die Gelegenheit, mich Ihnen in einem persönlichen Gespräch vorzustellen, freue ich mich sehr.</p>
+      </div>
+
+      <p class="letter-closing">Mit freundlichen Grüßen</p>
+      <p class="letter-name">Marit Böttcher</p>
+
+      <p class="letter-anlage">Anlage: Lebenslauf, Ausbildungsnachweise, Praktikumsbeurteilungen</p>
+
     </div>
-    <div class="hero-body">
-      <p class="hero-eyebrow">Lebenslauf</p>
-      <h1>Marit <em>Böttcher</em></h1>
-      <p class="hero-role">Angehende staatlich anerkannte Erzieherin</p>
-      <address>
-        <div class="contact-row">
-          <div class="c-item"><span class="c-label">Adresse</span><span>Hauptstraße 16, 23847 Schiphorst</span></div>
-          <div class="c-item"><span class="c-label">Telefon</span><a href="tel:017657225783">0176 57225783</a></div>
-          <div class="c-item"><span class="c-label">E-Mail</span><a href="mailto:marit.boettcher@mail.de">marit.boettcher@mail.de</a></div>
-          <div class="c-item"><span class="c-label">Geburt</span><span>26. November 2002, Lübeck</span></div>
-        </div>
-      </address>
-    </div>
-  </header>
-
-  <!-- ═══ AUSBILDUNG ═══ -->
-  <section class="card sec up d1">
-    <div class="sec-head">
-      <span class="sec-mark"></span>
-      <h2>Ausbildung</h2>
-    </div>
-
-    <article class="entry">
-      <div class="entry-date">08/2023 – 06/2026</div>
-      <div>
-        <h3>Ausbildung zur staatlich anerkannten Erzieherin</h3>
-        <p class="entry-org">Fachschule für Sozialpädagogik · Berufliche Schule des Kreises Stormarn, Bad Oldesloe</p>
-        <ul class="entry-list">
-          <li>Dreijährige schulische Weiterbildung mit fachpraktischer Ausbildung in verschiedenen sozialpädagogischen Arbeitsfeldern</li>
-          <li>Vertiefung in der Gestaltung pädagogischer Beziehungen, Gruppenprozesse und sozialpädagogischer Bildungsarbeit</li>
-          <li>Ausbildungsinhalte u.&thinsp;a. pädagogische Gruppenarbeit, sozialpädagogische Bildungsarbeit sowie Zusammenarbeit mit Eltern, Team und Netzwerkpartnern</li>
-        </ul>
-        <span class="tag">Voraussichtlicher Abschluss 06/2026</span>
-      </div>
-    </article>
-
-    <article class="entry">
-      <div class="entry-date">08/2019 – 06/2022</div>
-      <div>
-        <h3>Abitur</h3>
-        <p class="entry-org">Grund- und Gemeinschaftsschule Sandesneben</p>
-        <ul class="entry-list">
-          <li>Leistungsfächer: Chemie, Biologie, Physik</li>
-        </ul>
-      </div>
-    </article>
-  </section>
-
-  <!-- ═══ PRAKTISCHE ERFAHRUNG ═══ -->
-  <section class="card sec up d2">
-    <div class="sec-head">
-      <span class="sec-mark"></span>
-      <h2>Praktische Erfahrung</h2>
-    </div>
-
-    <article class="entry">
-      <div class="entry-date">09/2025 – 11/2025</div>
-      <div>
-        <h3>Praktikum — Kinder- und Jugendhilfe „Die Reitgruppe"</h3>
-        <p class="entry-org">Lübeck</p>
-        <ul class="entry-list">
-          <li>Pädagogische Begleitung von Kindern und Jugendlichen im Alltag einer Wohngruppe der Kinder- und Jugendhilfe</li>
-          <li>Unterstützung bei Alltagsstrukturierung, individueller Förderung und Freizeitangeboten</li>
-          <li>Einblicke in die Zusammenarbeit mit Schule, Familie und weiteren Institutionen</li>
-          <li>Kennenlernen tiergestützter und reitpädagogischer Ansätze in der Jugendhilfe</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="entry">
-      <div class="entry-date">01/2025 – 04/2025</div>
-      <div>
-        <h3>Praktikum — Kinderheim „Haus Arild"</h3>
-        <p class="entry-org">Bliestorf</p>
-        <ul class="entry-list">
-          <li>Begleitung von Kindern und Jugendlichen im pädagogischen Alltag der stationären Einrichtung</li>
-          <li>Mitgestaltung von Tagesstrukturen, Gruppenangeboten und gemeinsamen Aktivitäten</li>
-          <li>Einblicke in Beziehungsarbeit, Fallbesprechungen und teaminterne Reflexion</li>
-          <li>Kennenlernen des pädagogischen Umgangs mit besonderen Unterstützungsbedarfen</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="entry">
-      <div class="entry-date">04/2024 – 06/2024</div>
-      <div>
-        <h3>Praktikum — Kindergarten „Tingelfing e.V."</h3>
-        <p class="entry-org">Elementarbereich · Lübeck</p>
-        <ul class="entry-list">
-          <li>Begleitung des pädagogischen Alltags im Elementarbereich</li>
-          <li>Planung und Durchführung von Bastel-, Bewegungs- und Experimentierangeboten</li>
-          <li>Beobachtung kindlicher Entwicklungsprozesse und erste Einblicke in Elternkommunikation</li>
-          <li>Teilnahme an Teamabsprachen und Mitwirkung bei Veranstaltungen</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="entry">
-      <div class="entry-date">08/2022 – 07/2023</div>
-      <div>
-        <h3>Bundesfreiwilligendienst — Kindergarten „Tingelfing e.V."</h3>
-        <p class="entry-org">Elementarbereich · Lübeck</p>
-        <ul class="entry-list">
-          <li>Ganzjährige Mitarbeit im pädagogischen Alltag einer Kindertageseinrichtung</li>
-          <li>Begleitung von Kindern im Alter von drei bis sechs Jahren im Kindergartenalltag</li>
-          <li>Unterstützung bei Bastel- und Bewegungsangeboten sowie bei Alltagsroutinen</li>
-          <li>Mitwirkung bei Elternabenden, Festen und weiteren Veranstaltungen</li>
-        </ul>
-        <span class="tag">BFD · 12 Monate</span>
-      </div>
-    </article>
-  </section>
-
-  <!-- ═══ EHRENAMT ═══ -->
-  <section class="card sec up d3">
-    <div class="sec-head">
-      <span class="sec-mark"></span>
-      <h2>Ehrenamtliche Tätigkeit</h2>
-    </div>
-
-    <article class="entry">
-      <div class="entry-date">seit 2017</div>
-      <div>
-        <h3>Teamerin — Evangelische Jugend Lauenburg</h3>
-        <p class="entry-org">Freiwilliges Engagement seit über 8 Jahren</p>
-        <ul class="entry-list">
-          <li>Begleitung und Betreuung von Kinder- und Jugendgruppen</li>
-          <li>Mitwirkung bei Konfirmandenunterricht, Freizeiten und Ausflügen</li>
-          <li>Unterstützung bei Planung und Durchführung von Gruppenangeboten</li>
-        </ul>
-      </div>
-    </article>
-  </section>
-
-  <!-- ═══ SPRACHEN + STÄRKEN ═══ -->
-  <div class="duo">
-    <section class="card sec up d4">
-      <div class="sec-head">
-        <span class="sec-mark"></span>
-        <h2>Sprachen</h2>
-      </div>
-      <div class="lang">
-        <div class="lang-row"><span class="lang-name">Deutsch</span><span class="lang-lvl">Muttersprache</span></div>
-        <div class="track"><div class="fill" style="--w:100%;--d:.4s"></div></div>
-      </div>
-      <div class="lang">
-        <div class="lang-row"><span class="lang-name">Englisch</span><span class="lang-lvl">Gute Kenntnisse</span></div>
-        <div class="track"><div class="fill" style="--w:65%;--d:.6s"></div></div>
-      </div>
-    </section>
-
-    <section class="card sec up d5">
-      <div class="sec-head">
-        <span class="sec-mark"></span>
-        <h2>Stärken</h2>
-      </div>
-      <div class="pill-group">
-        <span class="pill">Beziehungsstärke</span>
-        <span class="pill">Soziales Feingefühl</span>
-        <span class="pill">Gestaltungsfreude</span>
-        <span class="pill">Eigeninitiative</span>
-      </div>
-    </section>
   </div>
 
-  <!-- ═══ INTERESSEN ═══ -->
-  <section class="card sec up d6">
-    <div class="sec-head">
-      <span class="sec-mark"></span>
-      <h2>Interessen &amp; Hobbys</h2>
+  <!-- ═══════════════════════════════
+       LEBENSLAUF
+       ═══════════════════════════════ -->
+  <div class="tab-content" id="lebenslauf">
+
+    <header class="card hero up d0">
+      <div class="hero-photo" id="photoWrap">
+        <img id="cvPhoto" src="foto.jpg" alt="Marit Böttcher"/>
+        <span class="fallback" id="photoFallback" hidden>MB</span>
+      </div>
+      <div class="hero-body">
+        <p class="hero-eyebrow">Lebenslauf</p>
+        <h1>Marit <em>Böttcher</em></h1>
+        <p class="hero-role">Angehende staatlich anerkannte Erzieherin</p>
+        <address>
+          <div class="contact-row">
+            <div class="c-item"><span class="c-label">Adresse</span><span>Hauptstraße 16, 23847 Schiphorst</span></div>
+            <div class="c-item"><span class="c-label">Telefon</span><a href="tel:017657225783">0176 57225783</a></div>
+            <div class="c-item"><span class="c-label">E-Mail</span><a href="mailto:marit.boettcher@mail.de">marit.boettcher@mail.de</a></div>
+            <div class="c-item"><span class="c-label">Geburt</span><span>26. November 2002, Lübeck</span></div>
+          </div>
+        </address>
+      </div>
+    </header>
+
+    <section class="card sec up d1">
+      <div class="sec-head"><span class="sec-mark"></span><h2>Ausbildung</h2></div>
+      <article class="entry">
+        <div class="entry-date">08/2023 – 06/2026</div>
+        <div>
+          <h3>Ausbildung zur staatlich anerkannten Erzieherin</h3>
+          <p class="entry-org">Fachschule für Sozialpädagogik · Berufliche Schule des Kreises Stormarn, Bad Oldesloe</p>
+          <ul class="entry-list">
+            <li>Dreijährige schulische Weiterbildung mit fachpraktischer Ausbildung in verschiedenen sozialpädagogischen Arbeitsfeldern</li>
+            <li>Vertiefung in der Gestaltung pädagogischer Beziehungen, Gruppenprozesse und sozialpädagogischer Bildungsarbeit</li>
+            <li>Ausbildungsinhalte u.&thinsp;a. pädagogische Gruppenarbeit, sozialpädagogische Bildungsarbeit sowie Zusammenarbeit mit Eltern, Team und Netzwerkpartnern</li>
+          </ul>
+          <span class="tag">Voraussichtlicher Abschluss 06/2026</span>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry-date">08/2019 – 06/2022</div>
+        <div>
+          <h3>Abitur</h3>
+          <p class="entry-org">Grund- und Gemeinschaftsschule Sandesneben</p>
+          <ul class="entry-list"><li>Leistungsfächer: Chemie, Biologie, Physik</li></ul>
+        </div>
+      </article>
+    </section>
+
+    <section class="card sec up d2">
+      <div class="sec-head"><span class="sec-mark"></span><h2>Praktische Erfahrung</h2></div>
+      <article class="entry">
+        <div class="entry-date">09/2025 – 11/2025</div>
+        <div>
+          <h3>Praktikum — Kinder- und Jugendhilfe „Die Reitgruppe"</h3>
+          <p class="entry-org">Lübeck</p>
+          <ul class="entry-list">
+            <li>Pädagogische Begleitung von Kindern und Jugendlichen im Alltag einer Wohngruppe der Kinder- und Jugendhilfe</li>
+            <li>Unterstützung bei Alltagsstrukturierung, individueller Förderung und Freizeitangeboten</li>
+            <li>Einblicke in die Zusammenarbeit mit Schule, Familie und weiteren Institutionen</li>
+            <li>Kennenlernen tiergestützter und reitpädagogischer Ansätze in der Jugendhilfe</li>
+          </ul>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry-date">01/2025 – 04/2025</div>
+        <div>
+          <h3>Praktikum — Kinderheim „Haus Arild"</h3>
+          <p class="entry-org">Bliestorf</p>
+          <ul class="entry-list">
+            <li>Begleitung von Kindern und Jugendlichen im pädagogischen Alltag der stationären Einrichtung</li>
+            <li>Mitgestaltung von Tagesstrukturen, Gruppenangeboten und gemeinsamen Aktivitäten</li>
+            <li>Einblicke in Beziehungsarbeit, Fallbesprechungen und teaminterne Reflexion</li>
+            <li>Kennenlernen des pädagogischen Umgangs mit besonderen Unterstützungsbedarfen</li>
+          </ul>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry-date">04/2024 – 06/2024</div>
+        <div>
+          <h3>Praktikum — Kindergarten „Tingelfing e.V."</h3>
+          <p class="entry-org">Elementarbereich · Lübeck</p>
+          <ul class="entry-list">
+            <li>Begleitung des pädagogischen Alltags im Elementarbereich</li>
+            <li>Planung und Durchführung von Bastel-, Bewegungs- und Experimentierangeboten</li>
+            <li>Beobachtung kindlicher Entwicklungsprozesse und erste Einblicke in Elternkommunikation</li>
+            <li>Teilnahme an Teamabsprachen und Mitwirkung bei Veranstaltungen</li>
+          </ul>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry-date">08/2022 – 07/2023</div>
+        <div>
+          <h3>Bundesfreiwilligendienst — Kindergarten „Tingelfing e.V."</h3>
+          <p class="entry-org">Elementarbereich · Lübeck</p>
+          <ul class="entry-list">
+            <li>Ganzjährige Mitarbeit im pädagogischen Alltag einer Kindertageseinrichtung</li>
+            <li>Begleitung von Kindern im Alter von drei bis sechs Jahren im Kindergartenalltag</li>
+            <li>Unterstützung bei Bastel- und Bewegungsangeboten sowie bei Alltagsroutinen</li>
+            <li>Mitwirkung bei Elternabenden, Festen und weiteren Veranstaltungen</li>
+          </ul>
+          <span class="tag">BFD · 12 Monate</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="card sec up d3">
+      <div class="sec-head"><span class="sec-mark"></span><h2>Ehrenamtliche Tätigkeit</h2></div>
+      <article class="entry">
+        <div class="entry-date">seit 2017</div>
+        <div>
+          <h3>Teamerin — Evangelische Jugend Lauenburg</h3>
+          <p class="entry-org">Freiwilliges Engagement seit über 8 Jahren</p>
+          <ul class="entry-list">
+            <li>Begleitung und Betreuung von Kinder- und Jugendgruppen</li>
+            <li>Mitwirkung bei Konfirmandenunterricht, Freizeiten und Ausflügen</li>
+            <li>Unterstützung bei Planung und Durchführung von Gruppenangeboten</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <div class="duo">
+      <section class="card sec up d4">
+        <div class="sec-head"><span class="sec-mark"></span><h2>Sprachen</h2></div>
+        <div class="lang">
+          <div class="lang-row"><span class="lang-name">Deutsch</span><span class="lang-lvl">Muttersprache</span></div>
+          <div class="track"><div class="fill" style="--w:100%;--d:.4s"></div></div>
+        </div>
+        <div class="lang">
+          <div class="lang-row"><span class="lang-name">Englisch</span><span class="lang-lvl">Gute Kenntnisse</span></div>
+          <div class="track"><div class="fill" style="--w:65%;--d:.6s"></div></div>
+        </div>
+      </section>
+      <section class="card sec up d5">
+        <div class="sec-head"><span class="sec-mark"></span><h2>Stärken</h2></div>
+        <div class="pill-group">
+          <span class="pill">Beziehungsstärke</span>
+          <span class="pill">Soziales Feingefühl</span>
+          <span class="pill">Gestaltungsfreude</span>
+          <span class="pill">Eigeninitiative</span>
+        </div>
+      </section>
     </div>
-    <div class="pill-group">
-      <span class="pill">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2.5 8.5c3.5 1 6.5 1 9-1s5-4.5 9-4"/><path d="M2 13c4 1 7.5.5 10-1s4.5-4 9-3.5"/><path d="M3.5 17.5c3-1 6-1 8.5.5s4.5 4 8.5 4"/></svg>
-        Häkeln &amp; Stricken
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c0 0-1 1.5-1 2.5S12 7 12 7s1-1.5 1-2.5S12 2 12 2z"/><line x1="12" y1="7" x2="12" y2="9"/><path d="M3 9h18v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><path d="M3 14h18v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5z"/></svg>
-        Backen
-      </span>
-    </div>
-  </section>
+
+    <section class="card sec up d6">
+      <div class="sec-head"><span class="sec-mark"></span><h2>Interessen &amp; Hobbys</h2></div>
+      <div class="pill-group">
+        <span class="pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2.5 8.5c3.5 1 6.5 1 9-1s5-4.5 9-4"/><path d="M2 13c4 1 7.5.5 10-1s4.5-4 9-3.5"/><path d="M3.5 17.5c3-1 6-1 8.5.5s4.5 4 8.5 4"/></svg>
+          Häkeln &amp; Stricken
+        </span>
+        <span class="pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c0 0-1 1.5-1 2.5S12 7 12 7s1-1.5 1-2.5S12 2 12 2z"/><line x1="12" y1="7" x2="12" y2="9"/><path d="M3 9h18v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><path d="M3 14h18v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5z"/></svg>
+          Backen
+        </span>
+      </div>
+    </section>
+
+  </div><!-- /lebenslauf -->
 
 </div>
 
 <script>
 (function(){
+  // Photo fallback
   var img = document.getElementById('cvPhoto');
   var fallback = document.getElementById('photoFallback');
   var hero = document.querySelector('.hero');
-  if (!img || !fallback) return;
-  img.addEventListener('error', function(){
-    img.hidden = true;
-    fallback.hidden = false;
-    if (hero) hero.classList.add('no-photo');
+  if (img && fallback) {
+    img.addEventListener('error', function(){
+      img.hidden = true;
+      fallback.hidden = false;
+      if (hero) hero.classList.add('no-photo');
+    });
+  }
+
+  // Tab switching
+  var tabs = document.querySelectorAll('.tab');
+  var panels = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var target = this.getAttribute('data-tab');
+
+      tabs.forEach(function(t){
+        t.classList.remove('active');
+        t.setAttribute('aria-selected','false');
+      });
+      this.classList.add('active');
+      this.setAttribute('aria-selected','true');
+
+      panels.forEach(function(p){
+        p.classList.remove('visible');
+      });
+      document.getElementById(target).classList.add('visible');
+
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
   });
 })();
 </script>
