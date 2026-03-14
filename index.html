@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no"/>
+<meta http-equiv="x-rim-auto-match" content="none"/>
 <title>Marit Böttcher — Erzieherin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -42,6 +44,18 @@ body{
   line-height:1.47;
 }
 
+address{font-style:normal}
+
+/* Prevent iOS/Safari auto-detected links */
+a[x-apple-data-detectors]{
+  color:inherit !important;
+  text-decoration:none !important;
+  font-size:inherit !important;
+  font-family:inherit !important;
+  font-weight:inherit !important;
+  line-height:inherit !important;
+}
+
 /* ── Page ── */
 .page{
   max-width:740px;
@@ -63,7 +77,7 @@ body{
    ═══════════════════════════════ */
 .hero{
   display:grid;
-  grid-template-columns:136px 1fr;
+  grid-template-columns:132px 1fr;
   min-height:0;
 }
 
@@ -93,7 +107,7 @@ body{
 
 /* Hero body */
 .hero-body{
-  padding:36px 32px 32px;
+  padding:40px 36px 34px;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -104,19 +118,19 @@ body{
   font-weight:600;
   letter-spacing:0.04em;
   color:var(--accent);
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
 
-.hero-name{
+h1{
   font-family:var(--serif);
-  font-size:clamp(1.7rem,4.5vw,2.25rem);
+  font-size:clamp(1.75rem,4.8vw,2.35rem);
   font-weight:400;
   line-height:1.08;
   letter-spacing:-0.025em;
   color:var(--ink);
-  margin-bottom:8px;
+  margin-bottom:10px;
 }
-.hero-name em{
+h1 em{
   font-style:italic;
   color:var(--accent);
 }
@@ -125,10 +139,8 @@ body{
   font-size:13.5px;
   font-weight:400;
   color:var(--ink-3);
-  margin-bottom:24px;
+  margin-bottom:28px;
 }
-
-address{font-style:normal}
 
 .contact-row{
   display:grid;
@@ -176,17 +188,17 @@ address{font-style:normal}
   margin-bottom:18px;
 }
 
-/* Unified section indicator — single accent color, quiet */
 .sec-mark{
   width:3px;
-  height:14px;
+  height:12px;
   border-radius:2px;
   background:var(--accent);
-  opacity:0.35;
+  opacity:0.42;
   flex-shrink:0;
 }
 
-.sec-title{
+h2{
+  font-family:var(--sans);
   font-size:13px;
   font-weight:600;
   color:var(--ink);
@@ -212,8 +224,15 @@ address{font-style:normal}
   font-variant-numeric:tabular-nums;
   line-height:1.5;
 }
+/* Override mobile browser auto-detected links in dates */
+.entry-date a{
+  color:inherit !important;
+  text-decoration:none !important;
+  pointer-events:none;
+}
 
-.entry-title{
+h3{
+  font-family:var(--sans);
   font-size:14.5px;
   font-weight:600;
   color:var(--ink);
@@ -225,7 +244,7 @@ address{font-style:normal}
 .entry-org{
   font-size:12.5px;
   color:var(--ink-3);
-  margin-bottom:6px;
+  margin-bottom:7px;
   line-height:1.45;
 }
 
@@ -247,7 +266,7 @@ address{font-style:normal}
   background:var(--ink-4);
 }
 
-/* ── Unified tag component ── */
+/* ── Unified tag ── */
 .tag{
   display:inline-block;
   font-size:11px;
@@ -289,11 +308,12 @@ address{font-style:normal}
   border-radius:99px;
   background:var(--accent-muted);
   transform-origin:left;
-  animation:grow .8s cubic-bezier(.25,.46,.45,.94) both;
+  width:var(--w);
+  animation:grow .8s cubic-bezier(.25,.46,.45,.94) var(--d,0s) both;
 }
 @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
-/* ── Unified pills (strengths, interests, tags all share base) ── */
+/* ── Unified pills ── */
 .pill-group{display:flex;flex-wrap:wrap;gap:6px}
 
 .pill{
@@ -333,17 +353,25 @@ address{font-style:normal}
 /* ═══════════════════════════════
    RESPONSIVE
    ═══════════════════════════════ */
+
+/* No-photo fallback — desktop: slim side column */
+.hero.no-photo{grid-template-columns:80px 1fr}
+.hero.no-photo .hero-photo{min-height:0}
+
 @media(max-width:600px){
   .page{padding:20px 12px 40px}
   .hero{grid-template-columns:1fr;grid-template-rows:180px auto}
   .hero-photo{min-height:180px}
+  /* No-photo fallback — mobile: hide photo area entirely */
+  .hero.no-photo{grid-template-columns:1fr;grid-template-rows:auto}
+  .hero.no-photo .hero-photo{display:none}
   .hero-body{padding:24px 20px 22px}
   .sec{padding:20px 18px 18px}
   .contact-row{grid-template-columns:1fr}
   .entry{grid-template-columns:1fr;gap:1px}
   .entry-date{font-size:11px;margin-bottom:1px}
   .duo{grid-template-columns:1fr}
-  .hero-name{font-size:1.65rem}
+  h1{font-size:1.65rem}
 }
 
 /* ═══════════════════════════════
@@ -353,6 +381,7 @@ address{font-style:normal}
   body{background:#fff}
   .page{padding:8mm 10mm;max-width:none}
   .card{box-shadow:none;border:.5pt solid #ddd;break-inside:avoid}
+  .entry{break-inside:avoid}
   .up{opacity:1;transform:none;animation:none}
   .fill{animation:none;transform:scaleX(1)}
   .hero-photo{
@@ -379,7 +408,7 @@ address{font-style:normal}
     </div>
     <div class="hero-body">
       <p class="hero-eyebrow">Lebenslauf</p>
-      <h1 class="hero-name">Marit <em>Böttcher</em></h1>
+      <h1>Marit <em>Böttcher</em></h1>
       <p class="hero-role">Angehende staatlich anerkannte Erzieherin</p>
       <address>
         <div class="contact-row">
@@ -396,13 +425,13 @@ address{font-style:normal}
   <section class="card sec up d1">
     <div class="sec-head">
       <span class="sec-mark"></span>
-      <span class="sec-title">Ausbildung</span>
+      <h2>Ausbildung</h2>
     </div>
 
-    <div class="entry">
+    <article class="entry">
       <div class="entry-date">08/2023 – 06/2026</div>
       <div>
-        <p class="entry-title">Ausbildung zur staatlich anerkannten Erzieherin</p>
+        <h3>Ausbildung zur staatlich anerkannten Erzieherin</h3>
         <p class="entry-org">Fachschule für Sozialpädagogik · Berufliche Schule des Kreises Stormarn, Bad Oldesloe</p>
         <ul class="entry-list">
           <li>Dreijährige schulische Weiterbildung mit fachpraktischer Ausbildung in verschiedenen sozialpädagogischen Arbeitsfeldern</li>
@@ -411,31 +440,31 @@ address{font-style:normal}
         </ul>
         <span class="tag">Voraussichtlicher Abschluss 06/2026</span>
       </div>
-    </div>
+    </article>
 
-    <div class="entry">
+    <article class="entry">
       <div class="entry-date">08/2019 – 06/2022</div>
       <div>
-        <p class="entry-title">Abitur</p>
+        <h3>Abitur</h3>
         <p class="entry-org">Grund- und Gemeinschaftsschule Sandesneben</p>
         <ul class="entry-list">
           <li>Leistungsfächer: Chemie, Biologie, Physik</li>
         </ul>
       </div>
-    </div>
+    </article>
   </section>
 
   <!-- ═══ PRAKTISCHE ERFAHRUNG ═══ -->
   <section class="card sec up d2">
     <div class="sec-head">
       <span class="sec-mark"></span>
-      <span class="sec-title">Praktische Erfahrung</span>
+      <h2>Praktische Erfahrung</h2>
     </div>
 
-    <div class="entry">
+    <article class="entry">
       <div class="entry-date">09/2025 – 11/2025</div>
       <div>
-        <p class="entry-title">Praktikum — Kinder- und Jugendhilfe „Die Reitgruppe"</p>
+        <h3>Praktikum — Kinder- und Jugendhilfe „Die Reitgruppe"</h3>
         <p class="entry-org">Lübeck</p>
         <ul class="entry-list">
           <li>Pädagogische Begleitung von Kindern und Jugendlichen im Alltag einer Wohngruppe der Kinder- und Jugendhilfe</li>
@@ -444,12 +473,12 @@ address{font-style:normal}
           <li>Kennenlernen tiergestützter und reitpädagogischer Ansätze in der Jugendhilfe</li>
         </ul>
       </div>
-    </div>
+    </article>
 
-    <div class="entry">
+    <article class="entry">
       <div class="entry-date">01/2025 – 04/2025</div>
       <div>
-        <p class="entry-title">Praktikum — Kinderheim „Haus Arild"</p>
+        <h3>Praktikum — Kinderheim „Haus Arild"</h3>
         <p class="entry-org">Bliestorf</p>
         <ul class="entry-list">
           <li>Begleitung von Kindern und Jugendlichen im pädagogischen Alltag der stationären Einrichtung</li>
@@ -458,12 +487,12 @@ address{font-style:normal}
           <li>Kennenlernen des pädagogischen Umgangs mit besonderen Unterstützungsbedarfen</li>
         </ul>
       </div>
-    </div>
+    </article>
 
-    <div class="entry">
+    <article class="entry">
       <div class="entry-date">04/2024 – 06/2024</div>
       <div>
-        <p class="entry-title">Praktikum — Kindergarten „Tingelfing e.V."</p>
+        <h3>Praktikum — Kindergarten „Tingelfing e.V."</h3>
         <p class="entry-org">Elementarbereich · Lübeck</p>
         <ul class="entry-list">
           <li>Begleitung des pädagogischen Alltags im Elementarbereich</li>
@@ -472,12 +501,12 @@ address{font-style:normal}
           <li>Teilnahme an Teamabsprachen und Mitwirkung bei Veranstaltungen</li>
         </ul>
       </div>
-    </div>
+    </article>
 
-    <div class="entry">
+    <article class="entry">
       <div class="entry-date">08/2022 – 07/2023</div>
       <div>
-        <p class="entry-title">Bundesfreiwilligendienst — Kindergarten „Tingelfing e.V."</p>
+        <h3>Bundesfreiwilligendienst — Kindergarten „Tingelfing e.V."</h3>
         <p class="entry-org">Elementarbereich · Lübeck</p>
         <ul class="entry-list">
           <li>Ganzjährige Mitarbeit im pädagogischen Alltag einer Kindertageseinrichtung</li>
@@ -487,20 +516,20 @@ address{font-style:normal}
         </ul>
         <span class="tag">BFD · 12 Monate</span>
       </div>
-    </div>
+    </article>
   </section>
 
   <!-- ═══ EHRENAMT ═══ -->
   <section class="card sec up d3">
     <div class="sec-head">
       <span class="sec-mark"></span>
-      <span class="sec-title">Ehrenamtliche Tätigkeit</span>
+      <h2>Ehrenamtliche Tätigkeit</h2>
     </div>
 
-    <div class="entry">
+    <article class="entry">
       <div class="entry-date">seit 2017</div>
       <div>
-        <p class="entry-title">Teamerin — Evangelische Jugend Lauenburg</p>
+        <h3>Teamerin — Evangelische Jugend Lauenburg</h3>
         <p class="entry-org">Freiwilliges Engagement seit über 8 Jahren</p>
         <ul class="entry-list">
           <li>Begleitung und Betreuung von Kinder- und Jugendgruppen</li>
@@ -508,7 +537,7 @@ address{font-style:normal}
           <li>Unterstützung bei Planung und Durchführung von Gruppenangeboten</li>
         </ul>
       </div>
-    </div>
+    </article>
   </section>
 
   <!-- ═══ SPRACHEN + STÄRKEN ═══ -->
@@ -516,22 +545,22 @@ address{font-style:normal}
     <section class="card sec up d4">
       <div class="sec-head">
         <span class="sec-mark"></span>
-        <span class="sec-title">Sprachen</span>
+        <h2>Sprachen</h2>
       </div>
       <div class="lang">
         <div class="lang-row"><span class="lang-name">Deutsch</span><span class="lang-lvl">Muttersprache</span></div>
-        <div class="track"><div class="fill" style="width:100%;animation-delay:.4s"></div></div>
+        <div class="track"><div class="fill" style="--w:100%;--d:.4s"></div></div>
       </div>
       <div class="lang">
         <div class="lang-row"><span class="lang-name">Englisch</span><span class="lang-lvl">Gute Kenntnisse</span></div>
-        <div class="track"><div class="fill" style="width:65%;animation-delay:.6s"></div></div>
+        <div class="track"><div class="fill" style="--w:65%;--d:.6s"></div></div>
       </div>
     </section>
 
     <section class="card sec up d5">
       <div class="sec-head">
         <span class="sec-mark"></span>
-        <span class="sec-title">Stärken</span>
+        <h2>Stärken</h2>
       </div>
       <div class="pill-group">
         <span class="pill">Beziehungsstärke</span>
@@ -546,7 +575,7 @@ address{font-style:normal}
   <section class="card sec up d6">
     <div class="sec-head">
       <span class="sec-mark"></span>
-      <span class="sec-title">Interessen &amp; Hobbys</span>
+      <h2>Interessen &amp; Hobbys</h2>
     </div>
     <div class="pill-group">
       <span class="pill">
@@ -566,10 +595,12 @@ address{font-style:normal}
 (function(){
   var img = document.getElementById('cvPhoto');
   var fallback = document.getElementById('photoFallback');
+  var hero = document.querySelector('.hero');
   if (!img || !fallback) return;
   img.addEventListener('error', function(){
     img.hidden = true;
     fallback.hidden = false;
+    if (hero) hero.classList.add('no-photo');
   });
 })();
 </script>
